@@ -9,7 +9,7 @@ exports.login = function (req, res) {
 	  				req.session.user = user;
 	  				res.redirect('/homepage');
 		  		}else{
-		  			var loggedInUser = new User({name: data.name, profPicURL: picData.data.url, goals: []});
+		  			var loggedInUser = new User({name: data.name, FBID: data.id, profPicURL: picData.data.url, goals: []});
 		  			loggedInUser.save(function (err){
 				  			if(err)
 				  				console.log("Unable to save new user.");
@@ -20,4 +20,14 @@ exports.login = function (req, res) {
 		  	});
   		});
   });
+};
+
+// remove all existent users from the database
+exports.delete_all = function(req, res){
+	// clears out your list so you can start from scratch
+	User.remove({}, function(err) { 
+		if(err)
+			console.log("Unable to delete users");
+		res.redirect('/');
+	});
 };

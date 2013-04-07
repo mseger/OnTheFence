@@ -27,6 +27,7 @@ exports.create = function(req, res){
 
 // display all goals in db (for debugging purposes)
 exports.display = function(req, res){
+	console.log("CURR SESSION USER ID IS: ", req.session.user.FBID);
 	var goals = Goal.find({}).exec(function (err, docs){
 		if(err)
 			return console.log("Cannot retrieve + display your goals");
@@ -43,3 +44,7 @@ exports.delete_all = function(req, res){
 		res.redirect('/homepage');
 	});
 };
+
+
+// post to FB
+// req.facebook.api('/'+req.body.fbid+'/feed', 'POST', {'message': req.body.comment}, function (err, stuff) {

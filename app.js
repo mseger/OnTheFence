@@ -36,7 +36,8 @@ app.get('/', loginPage.splash);
 app.get('/login', Facebook.loginRequired(), user.login);
 app.get('/homepage', Facebook.loginRequired(), homepage.display);
 app.get('/goals/display', goal.display);
-app.get('/goals/delete_all', goal.delete_all);
+app.get('/goals/delete_all', Facebook.loginRequired(), goal.delete_all);
+app.get('/users/delete_all', Facebook.loginRequired(), user.delete_all);
 
 // PUTS
 app.post('/login', Facebook.loginRequired(), user.login);
