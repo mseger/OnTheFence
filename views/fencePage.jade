@@ -1,0 +1,10 @@
+extends layout
+
+block content 
+	h1(class='text-center') #{owner}'s Fence
+
+	div(class="fence")
+		each goal in goals
+			div(class="fencepost")
+				div(class="fencegoal")
+					h2(class='text-center') #{goal.goal_text}

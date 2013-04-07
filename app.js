@@ -4,6 +4,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , loginPage = require('./routes/loginPage')
+  , fencePage = require('./routes/fencePage')
   , homepage = require('./routes/homepage')
   , goal = require('./routes/goal')
   , mongoose = require('mongoose')
@@ -34,6 +35,7 @@ app.configure('development', function(){
 // GETS
 app.get('/', loginPage.splash);
 app.get('/login', Facebook.loginRequired(), user.login);
+app.get('/fence', Facebook.loginRequired(), fencePage.showFence);
 app.get('/homepage', Facebook.loginRequired(), homepage.display);
 app.get('/goals/display', goal.display);
 app.get('/goals/delete_all', Facebook.loginRequired(), goal.delete_all);
