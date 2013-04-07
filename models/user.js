@@ -3,7 +3,7 @@ var mongoose = require('mongoose'), Schema = mongoose.Schema
 var UserSchema = new Schema({
 	name: String, 
 	profPicURL: String, 
-	fences: [],
+	fence: [{type: Schema.Types.ObjectId, ref: 'Fence'}]
 });
 
 var User = mongoose.model('User', UserSchema);

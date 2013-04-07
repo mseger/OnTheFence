@@ -1,8 +1,8 @@
 var mongoose = require('mongoose'), Schema = mongoose.Schema
 
 var NailSchema = new Schema({
-	goal: String, 
-	coordinate: [String]
+	goal: {type: Schema.Types.ObjectId, ref: 'Goal'}, 
+	coordinate: [Number]
 });
 
 var Nail = mongoose.model('Nail', NailSchema);
