@@ -1,0 +1,14 @@
+extends layout
+
+block content 
+	div(id="greeter-content")
+		div.container
+			div.span5
+				img(src="http://bestclipartblog.com/clipart-pics/fence-clip-art-1.png")
+			div.span5
+				h1(id="site-title") On the Fence
+				h4 You don't want to do it, We make sure you don't. 
+				form(name="fb-login", action="/login", method="post") 
+					button.btn.btn-warning(type="submit", id="login-submit")
+						i.icon-user
+						h4 Login with Facebook 
