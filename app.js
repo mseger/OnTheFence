@@ -4,6 +4,8 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , loginPage = require('./routes/loginPage')
+  , homepage = require('./routes/homepage')
+  , goal = require('./routes/goal')
   , mongoose = require('mongoose')
   , Facebook = require('facebook-node-sdk');
 
@@ -32,9 +34,13 @@ app.configure('development', function(){
 // GETS
 app.get('/', loginPage.splash);
 app.get('/login', Facebook.loginRequired(), user.login);
+app.get('/homepage', Facebook.loginRequired(), homepage.display);
+app.get('/goals/display', goal.display);
+app.get('/goals/delete_all', goal.delete_all);
 
 // PUTS
 app.post('/login', Facebook.loginRequired(), user.login);
+app.post('/goal/new', Facebook.loginRequired(), goal.create);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

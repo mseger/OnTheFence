@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    title= title
+
+    div.row.container
+        div.span4(id="create-goal")
+            h3 Create a New Goal
+            form(name="create-goal-form", action="/goal/new", method="post")
+                 | I want to...
+                 br
+                 input(type="text", name="goal_body")
+                 br
+                 br
+                 | Notify my friends of my new goal 
+                 input(type="checkbox", name="locked")
+                 br
+                 br
+                 button.btn(type="submit")
+                    i.icon-plus
+                    |  Create new Goal

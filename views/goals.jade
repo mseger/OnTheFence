@@ -1,0 +1,8 @@
+extends layout
+
+block content
+
+	h3 Goals
+		each goal, i in goals
+			| The goal is: #{goal.goal_text}
+			br

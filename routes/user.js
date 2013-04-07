@@ -7,14 +7,14 @@ exports.login = function (req, res) {
 	  		var existentUser = User.findOne({name: data.name}, function (err, user){
 	  			if(user){
 	  				req.session.user = user;
-	  				res.redirect('/room_index');
+	  				res.redirect('/homepage');
 		  		}else{
-		  			var loggedInUser = new User({name: data.name, profPicURL: picData.data.url, fences: []});
+		  			var loggedInUser = new User({name: data.name, profPicURL: picData.data.url, goals: []});
 		  			loggedInUser.save(function (err){
 				  			if(err)
 				  				console.log("Unable to save new user.");
 				  		 	req.session.user = loggedInUser; 
-				  			res.redirect('/room_index');
+				  			res.redirect('/homepage');
 		  			});
 		  		}
 		  	});
