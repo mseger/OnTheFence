@@ -9,7 +9,7 @@ exports.login = function (req, res) {
 	  				req.session.user = user;
 	  				res.redirect('/room_index');
 		  		}else{
-		  			var loggedInUser = new User({name: data.name, profPicURL: picData.data.url, fences: [], friends: []});
+		  			var loggedInUser = new User({name: data.name, profPicURL: picData.data.url, fences: []});
 		  			loggedInUser.save(function (err){
 				  			if(err)
 				  				console.log("Unable to save new user.");
