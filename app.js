@@ -4,6 +4,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , loginPage = require('./routes/loginPage')
+  , fencePage = require('./routes/fencePage')
   , mongoose = require('mongoose')
   , Facebook = require('facebook-node-sdk');
 
@@ -32,6 +33,7 @@ app.configure('development', function(){
 // GETS
 app.get('/', loginPage.splash);
 app.get('/login', Facebook.loginRequired(), user.login);
+app.get('/fence', Facebook.loginRequired(), fencePage.showFence);
 
 // PUTS
 app.post('/login', Facebook.loginRequired(), user.login);

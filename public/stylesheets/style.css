@@ -13,3 +13,23 @@ a {
 	text-align: center;
 	margin-top: 100px;
 }
+
+/* fence page styling */
+
+.fence{
+  width: 100%;
+  text-align: center;
+}
+
+.fencepost{
+  margin: 0px;
+  padding: 0px;
+  width: 344px;
+  height: 764px;
+  display: inline-block;
+  background-image: url(images/fencepost_sign.png);
+}
+
+.fencegoal{
+  margin-top: 460px;
+}
