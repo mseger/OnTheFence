@@ -4,7 +4,6 @@ var UserSchema = new Schema({
 	name: String, 
 	profPicURL: String, 
 	fences: [],
-	friends: [], 
 });
 
 var User = mongoose.model('User', UserSchema);
