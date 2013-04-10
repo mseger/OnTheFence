@@ -60,3 +60,27 @@ a {
   margin-left: 90px;
   text-align: left;
 }
+
+#nailbox{
+  float: center; 
+  width: 100px; 
+  height: 100px; 
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+  background-image: url('http://us.123rf.com/400wm/400/400/temel/temel0802/temel080200284/2619614-close-up-of-a-box-of-nails.jpg'); 
+  background-size: 120px 120px;
+}
+
+#nailbox #nail{ 
+  width:100px; 
+  height:100px; 
+  opacity: 0.01
+}
+/*actually I want to see this image when I drag it but not when it's 'in the box'*/
+
+
+.numberofnails{
+  color: black;
+  font-size: 20px; 
+}

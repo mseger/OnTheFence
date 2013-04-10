@@ -2,7 +2,8 @@ extends layout
 
 block content 
 	h1(class='text-center') #{owner}'s Fence
-
+    div(id="nailbox", ondrop="drop(event)", ondragover="allowDrop(event)")
+      img(src="http://www.stockphotopro.com/photo-thumbs-2/A0B45Y.jpg",     draggable="true", ondragstart="drag(event)", id="nail", width="25", height="25")
 	div(class="fence")
 		div(class="emptypost", id="empty")
 			div(class="newgoal")
@@ -22,6 +23,8 @@ block content
 						i.icon-plus
 						|  Create new Goal
 		each goal in goals
-			div(class="fencepost", id="#{goal._id}")
-				div(class="fencegoal")
-					h2(class='text-center') #{goal.goal_text}
+			div(class="fencepost", id="#{goal._id}", ondrop="copy(event)", ondragover="allowDrop(event)")
+                p(class="numberofnails") #{goal.nails+1}
+                //each nail in nails need to be placed in the right part of the post div
+                div(class="fencegoal")
+                    h2(class='text-center') #{goal.goal_text}
