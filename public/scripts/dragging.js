@@ -19,6 +19,6 @@ function copy(ev)
 {
 ev.preventDefault();
 var data=ev.dataTransfer.getData("Text");
-ev.target.appendChild(document.getElementById(data).cloneNode(true));
+ev.target.insertBefore(document.getElementById(data).cloneNode(true), ev.target.firstChild.nextSibling.nextSibling);
 $.post('/fence/nails', {goal_id:ev.target.id});
 }

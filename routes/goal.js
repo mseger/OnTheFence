@@ -25,11 +25,8 @@ exports.create = function(req, res){
 }
 
 exports.addnail = function(req,res){
-	//add a nail to a post using when the div associated with it gets one dropped on it.
-	//we'll give in the goal mongo id.
-	console.log(req.body)
-	incred_goal_id = req.body.goal_id
-	incred_goal = Goal.find({_id:incred_goal_id}).exec(function (err,docs){
+	//add a nail to a post when one gets dragged + dropped on it.
+	incred_goal = Goal.findOne({_id:req.body.goal_id}).exec(function (err,docs){
 		if(err)
 			return console.log("Cannot add a nail to this goal");
 		docs.nails++;
@@ -40,6 +37,22 @@ exports.addnail = function(req,res){
 	});
   });
 }
+exports.removenail = function(req,res){
+	//remove a nail from a post when the button 'remove a nail' is clicked
+	console.log(req.body, 'hello')
+	incred_goal = Goal.findOne({_id:req.body.goal_id}).exec(function (err,docs){
+		if(err)
+			return console.log("Cannot remove a nail from this goal");
+		if(docs.nails > 0)
+			docs.nails--
+		docs.save(function(err){
+				if(err)
+					console.log("Unable to update user's goals list");
+				res.redirect('/fence');
+	});
+  });
+}
+
 // display all goals in db (for debugging purposes)
 exports.display = function(req, res){
 	console.log("CURR SESSION USER ID IS: ", req.session.user.FBID);

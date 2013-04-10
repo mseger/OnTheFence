@@ -45,6 +45,7 @@ app.get('/users/delete_all', Facebook.loginRequired(), user.delete_all);
 app.post('/login', Facebook.loginRequired(), user.login);
 app.post('/goal/new', Facebook.loginRequired(), goal.create);
 app.post('/fence/nails', Facebook.loginRequired(), goal.addnail);
+app.post('/goal/removenail', Facebook.loginRequired(), goal.removenail);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
