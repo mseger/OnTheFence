@@ -19,6 +19,7 @@ function copy(ev)
 {
 ev.preventDefault();
 var data=ev.dataTransfer.getData("Text");
-ev.target.insertBefore(document.getElementById(data).cloneNode(true), ev.target.firstChild.nextSibling.nextSibling);
-$.post('/fence/nails', {goal_id:ev.target.id});
+console.log("DATA: " + data);
+ev.target.insertBefore(document.getElementById(data).cloneNode(true), ev.target.firstChild);
+$.post('/goal/addnail', {goal_id:ev.target.id});
 }

@@ -47,10 +47,8 @@ app.get('/users/delete_all', Facebook.loginRequired({scope: scope}), user.delete
 // PUTS
 app.post('/login', Facebook.loginRequired({scope: scope}), user.login);
 app.post('/goal/new', Facebook.loginRequired({scope: scope}), goal.create);
-app.post('/login', Facebook.loginRequired(), user.login);
-app.post('/goal/new', Facebook.loginRequired(), goal.create);
-app.post('/fence/nails', Facebook.loginRequired(), goal.addnail);
-app.post('/goal/removenail', Facebook.loginRequired(), goal.removenail);
+app.post('/goal/addnail', Facebook.loginRequired({scope: scope}), goal.addnail);
+app.post('/goal/removenail', Facebook.loginRequired({scope: scope}), goal.removenail);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

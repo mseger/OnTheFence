@@ -30,6 +30,7 @@ exports.create = function(req, res){
 
 exports.addnail = function(req,res){
 	//add a nail to a post when one gets dragged + dropped on it.
+	console.log("here" + req.body.goal_id)
 	incred_goal = Goal.findOne({_id:req.body.goal_id}).exec(function (err,docs){
 		if(err)
 			return console.log("Cannot add a nail to this goal");
