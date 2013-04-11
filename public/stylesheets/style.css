@@ -20,6 +20,7 @@ a {
   width: 12000px;
   overflow: auto;
   text-align: center;
+  margin-top: -10px;
   float:left;
 }
 

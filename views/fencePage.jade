@@ -2,10 +2,16 @@ extends layout
 
 block content
 
-	.row-fluid
-		h1.span4(class='text-center') #{owner}'s Fence
-		div.span6.offset4(id="nailbox", ondrop="drop(event)", ondragover="allowDrop(event)")
-			img(src="http://www.stockphotopro.com/photo-thumbs-2/A0B45Y.jpg", draggable="true", ondragstart="drag(event)", class="nail", width="25", height="25")
+	.row
+	.span9
+		h2(class='text-center', style="text-align:left;") #{owner}'s Fence
+		.row
+			.span2
+				div(id="nailbox", ondrop="drop(event)", ondragover="allowDrop(event)")
+					img(src="http://www.stockphotopro.com/photo-thumbs-2/A0B45Y.jpg", draggable="true", ondragstart="drag(event)", class="nail", width="30", height="30")
+			.span3(style="padding-top:20px") For every time you do your bad habit, drag a nail onto that goal's fence post. If you don't do your bad habit for a whole day, remove a nail!
+
+
 	div(class="fence")
 		div(class="emptypost", id="empty")
 			div(class="newgoal")
