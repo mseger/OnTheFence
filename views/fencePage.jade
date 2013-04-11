@@ -1,9 +1,16 @@
 extends layout
 
-block content 
-    h1(class='text-center') #{owner}'s Fence
-    div(id="nailbox", ondrop="drop(event)", ondragover="allowDrop(event)")
-        img(src="/stylesheets/images/nail.png", draggable="true", ondragstart="drag(event)", class="nail", width="25", height="25", id = "nail")
+block content
+
+    .row
+    .span9
+        h2(class='text-center', style="text-align:left;") #{owner}'s Habit Fence
+        .row
+            .span2
+                div(id="nailbox", ondrop="drop(event)", ondragover="allowDrop(event)")
+                    img(src="/stylesheets/images/nail.png", draggable="true", ondragstart="drag(event)", class="nail", id="nail", width="25", height="25")
+            .span3(style="padding-top:20px") For every time you do your bad habit, drag a nail onto that goal's fence post. If you don't do your bad habit for a whole day, remove a nail!
+
     div(class="fence")
         div(class="emptypost", id="empty")
             div(class="newgoal")
@@ -24,14 +31,13 @@ block content
                         |  Create new Goal
         each goal in goals
             div(class="fencepost")
-                p(class="numberofnails") #{goal.nails}
-                form(action="goal/removenail", method="post")
-                    input(type="hidden", value = goal._id, name = "goal_id")
-                    input(type="submit",value="Remove a nail")
+                p(class="numberofnails", , id="#{goal._id}"+"counter") #{goal.nails}
                 div(class="nailarea", ondrop="copy(event)", ondragover="allowDrop(event)", id="#{goal._id}")
                     - for (var i = 0; i< goal.nails; i++)
                         - if (i < 16)
-                            img(src=src="/stylesheets/images/nail.png", width="30", height="30", class = "nail")
+                            img(src=src="/stylesheets/images/nail.png", draggable = "false", width="30", height="30", class = "nail")
                 div(class="fencegoal")
                     h2(class='text-center') #{goal.goal_text}
-
+                form(action="goal/removenail", method="post")
+                    input(type="hidden", value = goal._id, name = "goal_id")
+                    input(type="submit",value="Remove a nail")

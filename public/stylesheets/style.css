@@ -20,6 +20,7 @@ a {
   width: 12000px;
   overflow: auto;
   text-align: center;
+  margin-top: -10px;
   float:left;
 }
 
@@ -37,7 +38,7 @@ a {
   vertical-align: top;
   margin: 0px;
   padding: 0px;
-  width: 260px;
+  width: 300px;
   height: 764px;
   display: inline-block;
   background-image: url(images/fencepost_empty.png);
@@ -45,18 +46,20 @@ a {
 }
 
 .emptyform{
-  color: white;
-  width: 140px;
+  color: black;
+  width: 160px;
 }
 
 .fencegoal{
-  margin-top: 420px;
+  margin-top: 0px;
   width: 220px;
+  height: 100px;
+  overflow: auto;
   margin-left: 40px;
 }
 
 .newgoal{
-  margin-top: 300px;
+  margin-top: 400px;
   margin-left: 80px;
   text-align: left;
 }
@@ -68,7 +71,7 @@ a {
   margin: 10px;
   padding: 10px;
   border: 1px solid #aaaaaa;
-  background-image: url('http://us.123rf.com/400wm/400/400/temel/temel0802/temel080200284/2619614-close-up-of-a-box-of-nails.jpg'); 
+  background-image: url('/stylesheets/images/nailbox.jpg'); 
   background-size: 120px 120px;
 }
 
@@ -80,8 +83,8 @@ a {
 
 .nailarea{
   width:120px; 
-  height:400px; 
-  margin-top:100px;
+  height:250px; 
+  margin-top:135px;
   margin-left:80px;
 }
 

@@ -18,11 +18,16 @@ exports.create = function(req, res){
 			docs.save(function(err){
 				if(err)
 					console.log("Unable to update user's goals list");
-				req.facebook.api('/'+req.session.user.FBID+'/feed', 'POST', {'message': "My new goal is to " + req.body.goal_body}, function (err, stuff) {
-					if(err)
-						console.log("Can't post your new goal to Facebook", err);
-					res.redirect('/goals/display');
-				});
+				if(req.body.FB_share == "on"){	
+					req.facebook.api('/'+req.session.user.FBID+'/feed', 'POST', {'message': "My new goal is to " + req.body.goal_body}, function (err, stuff) {
+						if(err)
+							console.log("Can't post your new goal to Facebook", err);
+						res.redirect('/fence');
+					});
+				}
+				else{
+					res.redirect('/fence');
+				}
 			});
 		});
 	});
