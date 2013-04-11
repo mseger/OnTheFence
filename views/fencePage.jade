@@ -2,9 +2,10 @@ extends layout
 
 block content
 
-	h1(class='text-center') #{owner}'s Fence
-	div(id="nailbox", ondrop="drop(event)", ondragover="allowDrop(event)")
-		img(src="http://www.stockphotopro.com/photo-thumbs-2/A0B45Y.jpg", draggable="true", ondragstart="drag(event)", class="nail", width="25", height="25")
+	.row-fluid
+		h1.span4(class='text-center') #{owner}'s Fence
+		div.span6.offset4(id="nailbox", ondrop="drop(event)", ondragover="allowDrop(event)")
+			img(src="http://www.stockphotopro.com/photo-thumbs-2/A0B45Y.jpg", draggable="true", ondragstart="drag(event)", class="nail", width="25", height="25")
 	div(class="fence")
 		div(class="emptypost", id="empty")
 			div(class="newgoal")
