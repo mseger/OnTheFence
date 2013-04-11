@@ -7,11 +7,11 @@ block content
 		div(class="emptypost", id="empty")
 			div(class="newgoal")
 				//-h2(class='text-center') What Is Your Goal?
-				h4 Create a New Goal
+				h4 Create New Goal
 				form(class="emptyform", name="create-goal-form", action="/goal/new", method="post")
 					| I want to...
 					br
-					input(type="text", name="goal_body", style="width: 130px")
+					input(type="text", name="goal_body", style="width: 110px")
 					br
 					br
 					| Notify my friends of my new goal 
@@ -20,7 +20,7 @@ block content
 					br
 					button.btn(type="submit")
 						i.icon-plus
-						|  Create new Goal
+						|  Create Goal
 		each goal in goals
 			div(class="fencepost", id="#{goal._id}")
 				div(class="fencegoal")
