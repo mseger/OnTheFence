@@ -23,13 +23,14 @@ block content
                         i.icon-plus
                         |  Create new Goal
         each goal in goals
-            div(class="fencepost", id="#{goal._id}", ondrop="copy(event)", ondragover="allowDrop(event)")
+            div(class="fencepost", ondrop="copy(event)", ondragover="allowDrop(event)")
                 p(class="numberofnails") #{goal.nails}
                 form(action="goal/removenail", method="post")
                   input(type="hidden", value = goal._id, name = "goal_id")
                   input(type="submit",value="Remove a nail")
-                - for (var i = 0; i< goal.nails; i++)
-                    - if (i < 20)
-                        img(src="http://www.stockphotopro.com/photo-thumbs-2/A0B45Y.jpg", width="25", height="25", class = "nail")
+                div(id="#{goal._id}", class="nailarea", ondrop="copy(event)", ondragover="allowDrop(event)")
+                    - for (var i = 0; i< goal.nails; i++)
+                        - if (i < 20)
+                            img(src="http://www.stockphotopro.com/photo-thumbs-2/A0B45Y.jpg", width="25", height="25", class = "nail")
                 div(class="fencegoal")
                     h2(class='text-center') #{goal.goal_text}
