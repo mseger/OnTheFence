@@ -2,30 +2,30 @@ extends layout
 
 block content 
 
-	h1(class='text-center') #{owner}'s Fence
+	//- h1(class='text-center') #{owner}'s Fence
 
-	div(class="fence")
-		div(class="emptypost", id="empty")
-			div(class="newgoal")
-				//-h2(class='text-center') What Is Your Goal?
-				h4 Create New Goal
-				form(class="emptyform", name="create-goal-form", action="/goal/new", method="post")
-					| I want to...
-					br
-					input(type="text", name="goal_body", style="width: 110px")
-					br
-					br
-					| Notify my friends of my new goal 
-					input(type="checkbox", name="locked")
-					br
-					br
-					button.btn(type="submit")
-						i.icon-plus
-						|  Create Goal
-		each goal in goals
-			div(class="fencepost", id="#{goal._id}")
-				div(class="fencegoal")
-					h2(class='text-center') #{goal.goal_text}
+	//- div(class="fence")
+	//- 	div(class="emptypost", id="empty")
+	//- 		div(class="newgoal")
+	//- 			//-h2(class='text-center') What Is Your Goal?
+	//- 			h4 Create New Goal
+	//- 			form(class="emptyform", name="create-goal-form", action="/goal/new", method="post")
+	//- 				| I want to...
+	//- 				br
+	//- 				input(type="text", name="goal_body", style="width: 110px")
+	//- 				br
+	//- 				br
+	//- 				| Notify my friends of my new goal 
+	//- 				input(type="checkbox", name="locked")
+	//- 				br
+	//- 				br
+	//- 				button.btn(type="submit")
+	//- 					i.icon-plus
+	//- 					|  Create Goal
+	//- 	each goal in goals
+	//- 		div(class="fencepost", id="#{goal._id}")
+	//- 			div(class="fencegoal")
+	//- 				h2(class='text-center') #{goal.goal_text}
 
 	h1(class='text-center') #{owner}'s Fence
 	div(id="nailbox", ondrop="drop(event)", ondragover="allowDrop(event)")
