@@ -32,18 +32,21 @@ app.configure('development', function(){
   mongoose.connect(process.env.MONGOLAB_URI || 'localhost');
 });
 
+// set a global variable for the FB permissions needed 
+global.scope = ['publish_stream'];
+
 // GETS
 app.get('/', loginPage.splash);
-app.get('/login', Facebook.loginRequired(), user.login);
-app.get('/fence', Facebook.loginRequired(), fencePage.showFence);
-app.get('/homepage', Facebook.loginRequired(), homepage.display);
-app.get('/goals/display', goal.display);
-app.get('/goals/delete_all', Facebook.loginRequired(), goal.delete_all);
-app.get('/users/delete_all', Facebook.loginRequired(), user.delete_all);
+app.get('/login', Facebook.loginRequired({scope: scope}), user.login);
+app.get('/fence', Facebook.loginRequired({scope: scope}), fencePage.showFence);
+app.get('/homepage', Facebook.loginRequired({scope: scope}), homepage.display);
+app.get('/goals/display', Facebook.loginRequired({scope: scope}), goal.display);
+app.get('/goals/delete_all', Facebook.loginRequired({scope: scope}), goal.delete_all);
+app.get('/users/delete_all', Facebook.loginRequired({scope: scope}), user.delete_all);
 
 // PUTS
-app.post('/login', Facebook.loginRequired(), user.login);
-app.post('/goal/new', Facebook.loginRequired(), goal.create);
+app.post('/login', Facebook.loginRequired({scope: scope}), user.login);
+app.post('/goal/new', Facebook.loginRequired({scope: scope}), goal.create);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

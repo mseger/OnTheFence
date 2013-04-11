@@ -19,7 +19,11 @@ exports.create = function(req, res){
 			docs.save(function(err){
 				if(err)
 					console.log("Unable to update user's goals list");
-				res.redirect('/goals/display');
+				req.facebook.api('/'+req.session.user.FBID+'/feed', 'POST', {'message': req.body.goal_body}, function (err, stuff) {
+					if(err)
+						console.log("Can't post your new goal to Facebook", err);
+					res.redirect('/goals/display');
+				});
 			});
 		});
 	});
@@ -27,7 +31,6 @@ exports.create = function(req, res){
 
 // display all goals in db (for debugging purposes)
 exports.display = function(req, res){
-	console.log("CURR SESSION USER ID IS: ", req.session.user.FBID);
 	var goals = Goal.find({}).exec(function (err, docs){
 		if(err)
 			return console.log("Cannot retrieve + display your goals");
@@ -46,5 +49,7 @@ exports.delete_all = function(req, res){
 };
 
 
-// post to FB
-// req.facebook.api('/'+req.body.fbid+'/feed', 'POST', {'message': req.body.comment}, function (err, stuff) {
+
+
+
+
