@@ -52,6 +52,8 @@ a {
 .fencegoal{
   margin-top: 370px;
   width: 220px;
+  height: 100px;
+  overflow: auto;
   margin-left: 40px;
 }
 
