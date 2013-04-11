@@ -40,23 +40,23 @@ a {
   width: 300px;
   height: 764px;
   display: inline-block;
-  background-image: url(images/fencepost_sign_wood.png);
+  background-image: url(images/fencepost_empty.png);
   float:left;
 }
 
 .emptyform{
-  color: white;
-  width: 140px;
+  color: black;
+  width: 160px;
 }
 
 .fencegoal{
-  margin-top: 420px;
+  margin-top: 370px;
   width: 220px;
   margin-left: 40px;
 }
 
 .newgoal{
-  margin-top: 300px;
+  margin-top: 400px;
   margin-left: 80px;
   text-align: left;
 }
