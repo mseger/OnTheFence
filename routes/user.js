@@ -2,7 +2,6 @@ var User = require('../models/user')
 
 // login a new user, start a new session
 exports.login = function (req, res) {
-	res.send("blahhahahahah");
 	console.log("before api");
   req.facebook.api('/me', function(err, data){
   	console.log("api call workeedddd");
