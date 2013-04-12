@@ -3,24 +3,28 @@ var User = require('../models/user')
 // login a new user, start a new session
 exports.login = function (req, res) {
 	res.send("blahhahahahah");
-  // req.facebook.api('/me', function(err, data){
-  // 	req.facebook.api('/me/picture?redirect=false&type=large', function(err, picData){
-	 //  		var existentUser = User.findOne({name: data.name}, function (err, user){
-	 //  			if(user){
-	 //  				req.session.user = user;
-	 //  				res.redirect('/fence');
-		//   		}else{
-		//   			var loggedInUser = new User({name: data.name, FBID: data.id, profPicURL: picData.data.url, goals: []});
-		//   			loggedInUser.save(function (err){
-		// 		  			if(err)
-		// 		  				console.log("Unable to save new user.");
-		// 		  		 	req.session.user = loggedInUser; 
-		// 		  			res.redirect('/fence');
-		//   			});
-		//   		}
-		//   	});
-  // 		});
-  // });
+	console.log("before api");
+  req.facebook.api('/me', function(err, data){
+  	console.log("api call workeedddd");
+  	req.facebook.api('/me/picture?redirect=false&type=large', function(err, picData){
+	  		var existentUser = User.findOne({name: data.name}, function (err, user){
+	  			if(user){
+	  				req.session.user = user;
+	  				res.send("chchchchcch");
+	  				// res.redirect('/fence');
+		  		}else{
+		  			var loggedInUser = new User({name: data.name, FBID: data.id, profPicURL: picData.data.url, goals: []});
+		  			loggedInUser.save(function (err){
+				  			if(err)
+				  				console.log("Unable to save new user.");
+				  		 	req.session.user = loggedInUser;
+				  		 	res.send("lalallalalal"); 
+				  			// res.redirect('/fence');
+		  			});
+		  		}
+		  	});
+  		});
+  });
 };
 
 // remove all existent users from the database
