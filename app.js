@@ -30,7 +30,6 @@ app.configure(function(){
 
 app.configure('development', function(){
   app.use(express.errorHandler());
-  mongoose.connect(process.env.MONGOLAB_URI || 'localhost');
   // mongoose.connect('mongodb://heroku_app14872780:pk4s41nd0ik570f93gk0soqn8b@ds037047.mongolab.com:37047/heroku_app14872780' || 'localhost');
 });
 

@@ -2,27 +2,18 @@ var User = require('../models/user')
 
 // login a new user, start a new session
 exports.login = function (req, res) {
-	console.log("before api");
   req.facebook.api('/me', function(err, data){
-  	console.log("api call workeedddd");
   	req.facebook.api('/me/picture?redirect=false&type=large', function(err, picData){
-  			console.log("but did this workeedddd?");
-  			console.log(data.name);
 	  		var existentUser = User.findOne({name: data.name}, function (err, user){
-	  			console.log("db worked");
 	  			if(user){
-	  				console.log(user);
 	  				req.session.user = user;
-	  				// res.send("chchchchcch");
 	  				res.redirect('/fence');
 		  		}else{
 		  			var loggedInUser = new User({name: data.name, FBID: data.id, profPicURL: picData.data.url, goals: []});
-		  			console.log(loggedInUser,"this is a usser");
 		  			loggedInUser.save(function (err){
 				  			if(err)
 				  				console.log("Unable to save new user.");
 				  		 	req.session.user = loggedInUser;
-				  		 	// res.send("lalallalalal"); 
 				  			res.redirect('/fence');
 		  			});
 		  		}
