@@ -6,13 +6,17 @@ exports.login = function (req, res) {
   req.facebook.api('/me', function(err, data){
   	console.log("api call workeedddd");
   	req.facebook.api('/me/picture?redirect=false&type=large', function(err, picData){
+  			console.log("but did this workeedddd?");
 	  		var existentUser = User.findOne({name: data.name}, function (err, user){
+	  			console.log("db worked");
 	  			if(user){
+	  				console.log(user);
 	  				req.session.user = user;
 	  				res.send("chchchchcch");
 	  				// res.redirect('/fence');
 		  		}else{
 		  			var loggedInUser = new User({name: data.name, FBID: data.id, profPicURL: picData.data.url, goals: []});
+		  			console.log(loggedInUser,"this is a usser");
 		  			loggedInUser.save(function (err){
 				  			if(err)
 				  				console.log("Unable to save new user.");
