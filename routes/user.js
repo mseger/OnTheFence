@@ -7,8 +7,10 @@ exports.login = function (req, res) {
   	console.log("api call workeedddd");
   	req.facebook.api('/me/picture?redirect=false&type=large', function(err, picData){
   			console.log("but did this workeedddd?");
-	  		var existentUser = User.findOne({name: data.name}, function (err, user){
+  			console.log(data.name);
+	  		var existentUser = User.find({}, function (err, user){
 	  			console.log("db worked");
+	  			user = user[0];
 	  			if(user){
 	  				console.log(user);
 	  				req.session.user = user;
