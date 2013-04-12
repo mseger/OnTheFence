@@ -2,42 +2,42 @@ extends layout
 
 block content
 
-	.row
-	.span9
-		h2(class='text-center', style="text-align:left;") #{owner}'s Habit Fence
-		.row
-			.span2
-				div(id="nailbox", ondrop="drop(event)", ondragover="allowDrop(event)")
-					img(src="http://www.stockphotopro.com/photo-thumbs-2/A0B45Y.jpg", draggable="true", ondragstart="drag(event)", class="nail", width="30", height="30")
-			.span3(style="padding-top:20px") For every time you do your bad habit, drag a nail onto that goal's fence post. If you don't do your bad habit for a whole day, remove a nail!
+    .row
+    .span9
+        h2(class='text-center', style="text-align:left;") #{owner}'s Habit Fence
+        .row
+            .span2
+                div(id="nailbox", ondrop="drop(event)", ondragover="allowDrop(event)")
+                    img(src="/stylesheets/images/nail.png", draggable="true", ondragstart="drag(event)", class="nail", id="nail", width="25", height="25")
+            .span3(style="padding-top:20px") For every time you do your bad habit, drag a nail onto that goal's fence post. If you don't do your bad habit for a whole day, remove a nail!
 
-
-	div(class="fence")
-		div(class="emptypost", id="empty")
-			div(class="newgoal")
-				//-h2(class='text-center') What Is Your Goal?
-				h4 Create a New Goal
-				form(class="emptyform", name="create-goal-form", action="/goal/new", method="post")
-					| I want to...
-					br
-					input(type="text", name="goal_body", style="width: 110px")
-					br
-					br
-					| Notify my friends of my new goal 
-					input(type="checkbox", name="locked")
-					br
-					br
-					button.btn.btn-warning(type="submit")
-						i.icon-plus(class="icon-white")
-						|  Create new Goal
-		each goal in goals
-			div(class="fencepost", id="#{goal._id}", ondrop="copy(event)", ondragover="allowDrop(event)")
-				p(class="numberofnails") #{goal.nails}
-				form(action="goal/removenail", method="post")
-					input(type="hidden", value = goal._id, name = "goal_id")
-					input(type="submit",value="Remove a nail")
-				- for (var i = 0; i< goal.nails; i++)
-					- if (i < 20)
-						img(src="http://www.stockphotopro.com/photo-thumbs-2/A0B45Y.jpg", width="25", height="25", class = "nail")
-				div(class="fencegoal")
-					h2(class='text-center') #{goal.goal_text}
+    div(class="fence")
+        div(class="emptypost", id="empty")
+            div(class="newgoal")
+                //-h2(class='text-center') What Is Your Goal?
+                h4 Create a New Goal
+                form(class="emptyform", name="create-goal-form", action="/goal/new", method="post")
+                    | I want to...
+                    br
+                    input(type="text", name="goal_body", style="width: 130px")
+                    br
+                    br
+                    | Notify my friends of my new goal 
+                    input(type="checkbox", name="locked")
+                    br
+                    br
+                    button.btn(type="submit")
+                        i.icon-plus
+                        |  Create new Goal
+        each goal in goals
+            div(class="fencepost")
+                p(class="numberofnails", , id="#{goal._id}"+"counter") #{goal.nails}
+                div(class="nailarea", ondrop="copy(event)", ondragover="allowDrop(event)", id="#{goal._id}")
+                    - for (var i = 0; i< goal.nails; i++)
+                        - if (i < 16)
+                            img(src=src="/stylesheets/images/nail.png", draggable = "false", width="30", height="30", class = "nail")
+                div(class="fencegoal")
+                    h2(class='text-center') #{goal.goal_text}
+                form(action="goal/removenail", method="post")
+                    input(type="hidden", value = goal._id, name = "goal_id")
+                    input(type="submit",value="Remove a nail")

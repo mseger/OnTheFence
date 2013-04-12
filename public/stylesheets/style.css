@@ -51,7 +51,7 @@ a {
 }
 
 .fencegoal{
-  margin-top: 370px;
+  margin-top: 0px;
   width: 220px;
   height: 100px;
   overflow: auto;
@@ -71,7 +71,7 @@ a {
   margin: 10px;
   padding: 10px;
   border: 1px solid #aaaaaa;
-  background-image: url('http://us.123rf.com/400wm/400/400/temel/temel0802/temel080200284/2619614-close-up-of-a-box-of-nails.jpg'); 
+  background-image: url('/stylesheets/images/nailbox.jpg'); 
   background-size: 120px 120px;
 }
 
@@ -81,9 +81,12 @@ a {
   opacity: 0.01
 }
 
-.fencepost .nail{
-  margin-top:100px;
-} 
+.nailarea{
+  width:120px; 
+  height:250px; 
+  margin-top:135px;
+  margin-left:80px;
+}
 
 .numberofnails{
   color: black;
