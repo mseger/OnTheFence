@@ -25,6 +25,7 @@ app.configure(function(){
   app.use(Facebook.middleware({appId: process.env.FACEBOOK_APPID, secret: process.env.FACEBOOK_SECRET}));
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
+  mongoose.connect(process.env.MONGOLAB_URI || 'localhost');
 });
 
 app.configure('development', function(){

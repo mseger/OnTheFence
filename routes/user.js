@@ -8,14 +8,13 @@ exports.login = function (req, res) {
   	req.facebook.api('/me/picture?redirect=false&type=large', function(err, picData){
   			console.log("but did this workeedddd?");
   			console.log(data.name);
-	  		var existentUser = User.find({}, function (err, user){
+	  		var existentUser = User.findOne({name: data.name}, function (err, user){
 	  			console.log("db worked");
-	  			user = user[0];
 	  			if(user){
 	  				console.log(user);
 	  				req.session.user = user;
-	  				res.send("chchchchcch");
-	  				// res.redirect('/fence');
+	  				// res.send("chchchchcch");
+	  				res.redirect('/fence');
 		  		}else{
 		  			var loggedInUser = new User({name: data.name, FBID: data.id, profPicURL: picData.data.url, goals: []});
 		  			console.log(loggedInUser,"this is a usser");
@@ -23,8 +22,8 @@ exports.login = function (req, res) {
 				  			if(err)
 				  				console.log("Unable to save new user.");
 				  		 	req.session.user = loggedInUser;
-				  		 	res.send("lalallalalal"); 
-				  			// res.redirect('/fence');
+				  		 	// res.send("lalallalalal"); 
+				  			res.redirect('/fence');
 		  			});
 		  		}
 		  	});
